@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 0;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 297mm;
+            height: 210mm;
+            background: #ffffff;
+            font-family: 'Georgia', serif;
+            color: #1a202c;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Outer Geometric Borders */
+        .border-outer {
+            position: absolute;
+            top: 10mm; left: 10mm; right: 10mm; bottom: 10mm;
+            border: 2px solid #cbd5e0;
+            z-index: 1;
+        }
+        .border-inner {
+            position: absolute;
+            top: 13mm; left: 13mm; right: 13mm; bottom: 13mm;
+            border: 4px solid #1a365d;
+            z-index: 1;
+        }
+        /* Corner Accent Triangles */
+        .corner-accent-tl {
+            position: absolute; top: 0; left: 0;
+            width: 0; height: 0;
+            border-top: 50mm solid #1a365d;
+            border-right: 50mm solid transparent;
+            z-index: 2;
+        }
+        .corner-accent-br {
+            position: absolute; bottom: 0; right: 0;
+            width: 0; height: 0;
+            border-bottom: 50mm solid #b7791f;
+            border-left: 50mm solid transparent;
+            z-index: 2;
+        }
+        /* Content Canvas */
+        .content {
+            z-index: 10;
+            text-align: center;
+            width: 220mm;
+        }
+        .header-title {
+            font-size: 40px;
+            letter-spacing: 6px;
+            color: #1a365d;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 8mm;
+        }
+        .sub-text {
+            font-size: 18px;
+            color: #4a5568;
+            font-style: italic;
+            margin-bottom: 6mm;
+        }
+        .recipient-name {
+            font-size: {{ dynamic_font_size }};
+            font-weight: bold;
+            color: #b7791f;
+            border-bottom: 2px solid #cbd5e0;
+            display: inline-block;
+            padding-bottom: 2mm;
+            margin-bottom: 8mm;
+            min-width: 140mm;
+        }
+        .body-copy {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #2d3748;
+            margin-bottom: 15mm;
+        }
+        .meta-table {
+            width: 100%;
+            margin-top: 10mm;
+        }
+        .meta-table td {
+            width: 50%;
+            text-align: center;
+            vertical-align: bottom;
+        }
+        .sig-line {
+            width: 65mm;
+            border-top: 1px solid #4a5568;
+            margin: 0 auto;
+            padding-top: 2mm;
+            font-size: 14px;
+            font-weight: bold;
+            color: #1a365d;
+        }
+    </style>
+</head>
+<body>
+    <div class="corner-accent-tl"></div>
+    <div class="corner-accent-br"></div>
+    <div class="border-outer"></div>
+    <div class="border-inner"></div>
+
+    <div class="content">
+        <div class="header-title">Certificate of Recognition</div>
+        <div class="sub-text">This official document is proudly presented to</div>
+        
+        <div class="recipient-name">{{ Name }}</div>
+        
+        <div class="body-copy">
+            In formal recognition of fulfilling all operational mandates, academic criteria, and technical deliverables required for the designation of:<br>
+            <strong>{{ Course | default('Professional Continuing Education') }}</strong>
+        </div>
+
+        <table class="meta-table">
+            <tr>
+                <td>
+                    <div class="sig-line">Date: {{ Date | default('Issued June 2026') }}</div>
+                </td>
+                <td>
+                    <div class="sig-line">Program Director</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

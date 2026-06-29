@@ -1,0 +1,23 @@
+# Security - NEVER COMMIT THESE
+.env
+*.env
+
+# Runtime Workspace Artifacts
+workspace/generated_pdfs/*
+workspace/checkpoints/*
+workspace/audit_logs/*
+
+# Keep the folder structure, but ignore the contents
+!workspace/generated_pdfs/.gitkeep
+!workspace/checkpoints/.gitkeep
+!workspace/audit_logs/.gitkeep
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# OS hidden files
+.DS_Store
+Thumbs.db

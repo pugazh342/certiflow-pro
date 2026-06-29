@@ -1,0 +1,22 @@
+certiflow_pro/
+
+│
+├── .env.example                # Template for SMTP credential
+├── requirements.txt            # Locked dependencies
+├── config.py                   # Global constants, paths, and rate-limit settings
+├── app.py                      # Main Streamlit Cockpit UI
+│
+├── modules/
+│   ├── __init__.py
+│   ├── ingestor.py             # CSV loading, sanitization, and regex validation
+│   ├── pdf_engine.py           # HTML template injection and PDF rendering
+│   ├── mailer.py               # SMTP TLS dispatch, MIME attachments, jitter logic
+│   └── state_manager.py        # Checkpointing, resume logic, and audit logging
+│
+├── templates/
+│   └── base_cert.html          # Clean, modern geometric HTML/CSS certificate template
+│
+└── workspace/                  # Git-ignored runtime folder
+    ├── generated_pdfs/
+    ├── checkpoints/
+    └── audit_logs/
